@@ -13,29 +13,20 @@ import Deposit from "../../Pages/Deposit/Deposit";
 import Staking from "../../Pages/Staking/Staking";
 import Participate from "../../Pages/Participate/Participate";
 import Airdrop from "../../Pages/Airdrop/Airdrop";
-import Transfer from "../../Pages/Transfer/Transfer";
-import ContractPicker from "../../Components/pickers/ContractPicker/ContractPicker";
-import Delegate from "../../Pages/Delegate/Delegate";
-import ComingSoon from "../../Pages/ComingSoon/ComingSoon";
-import Setting from "../../Pages/Setting/Setting";
 import voiStakingUtils from "../../utils/voiStakingUtils";
 import { CoreAccount } from "@repo/algocore";
 import { AccountResult } from "@algorandfoundation/algokit-utils/types/indexer";
 import { Box } from "@mui/material";
-import logo from "../../assets/images/full-logo.png";
+import logo from "../../assets/images/shellys.svg";
 import MobileMenu from "../../Components/MobilePanel";
 import "../App.scss";
+import CreateASA from "../../Pages/CreateASA/CreateASA";
 
 function AppRouter(): ReactElement {
   const { selectedNode } = useSelector((state: RootState) => state.nodes);
   const { activeAccount } = useWallet();
 
   const dispatch = useAppDispatch();
-
-  const isAirdrop = document.location?.pathname?.includes("airdrop");
-  const isStaking = document.location?.pathname?.includes("staking");
-  const isSetting = document.location?.pathname?.includes("setting");
-  const isAccount = document.location?.pathname?.includes("account");
 
   useEffect(() => {
     if (activeAccount?.address) {
@@ -78,17 +69,18 @@ function AppRouter(): ReactElement {
                   }}
                 >
                   <div
-                    style={{ background: "#6f2ae2" }}
+                    style={{ background: "#6f2ae2", color: "white" }}
                     className="p-2 sm:hidden mr-auto rounded-md! "
                   >
-                    <img
+                    {/*<img
                       className=""
                       style={{
                         width: "40px",
                       }}
                       src={logo}
                       alt={"logo"}
-                    />
+                    />*/}
+                    sandbox
                   </div>
                   <Box sx={{ display: { xs: "none", sm: "block" } }}>
                     {availableBalance >= 0 ? (
@@ -147,6 +139,10 @@ function AppRouter(): ReactElement {
                         <Route
                           path="/account"
                           element={<Participate></Participate>}
+                        ></Route>
+                        <Route
+                          path="/create-asa"
+                          element={<CreateASA></CreateASA>}
                         ></Route>
                         <Route
                           path="*"

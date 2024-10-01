@@ -32,10 +32,6 @@ function LeftPanel(): ReactElement {
   route = route.split("/");
   route = route[0];
 
-  
-
-  
-
   const routes: string[] = [...dashboardRoutes, ...settingRoutes];
 
   if (routes.indexOf(route) === -1) {
@@ -61,12 +57,12 @@ function LeftPanel(): ReactElement {
   //   },
   // ];
 
-  
   return (
     <div className="left-panel-wrapper ">
       <div className="left-panel-container">
         <div className="logo flex items-center justify-center">
-          <img src={logo} alt={"logo"} />
+          {/*<img src={logo} alt={"logo"} />*/}
+          sandbox
         </div>
         <div className="nav-tabs">
           <Tabs
